@@ -1,12 +1,13 @@
 from collections import deque
+
 def king_escape(grid, N):
-# BFS implementation checking 8 directions
-# and avoiding '#' cells
-   if grid == '#' or grid == 'T':
-        return 0 if grid == 'T' else "TRAPPED"
+    # Fix: Check starting cell (0, 0)
+    if grid[0][0] == '#' or grid[0][0] == 'T':
+        return 0 if grid[0][0] == 'T' else "TRAPPED"
         
-    queue = deque([(0, 0, 0)])
+    queue = deque([(0, 0, 0)])  # Stores (row, col, distance)
     visited = {(0, 0)}
+    # 8 possible directions (Up, Down, Left, Right & 4 Diagonals)
     directions = [(-1,-1), (-1,0), (-1,1), (0,-1), (0,1), (1,-1), (1,0), (1,1)]
     
     while queue:
@@ -24,8 +25,17 @@ def king_escape(grid, N):
                     
     return "TRAPPED"
 
-    # NOT YET CHECK IF THIS CORRECT
+# --- Driver Code to read input and see the output ---
+if __name__ == "__main__":
+    N = int(input().strip())
+    grid = [input().strip() for _ in range(N)]
     
+    result = king_escape(grid, N)
+    print(result)
 
-
-
+## NEED TO CHECK AGAIN
+# Sample output 1: 3
+# Sample output 2: TRAPPED
+# Output 1: 18
+# Output 2: 28
+# Output 3: 200

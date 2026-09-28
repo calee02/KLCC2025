@@ -1,3 +1,10 @@
+# Part 2 - Median
+
+"""
+Task: Output the median of a list of numbers.
+
+"""
+
 def find_median(arr):
     s = sorted(arr)
     n = len(s)
